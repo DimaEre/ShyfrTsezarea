@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Specialized;
+using System.Reflection;
 
 class Program
 {
    
 
-    void Main()
+    static void Main()
     {
         Console.OutputEncoding = System.Text.Encoding.Unicode;
         Console.InputEncoding = System.Text.Encoding.Unicode;
 
         int a = 0;
         string text;
+        string btext = "";
         string abetka = "абвгґдеєжзиіїйклмнопртстуфхцчшщюя";
 
         Console.WriteLine("\t\t\tШифр Цезаря");
@@ -27,15 +29,17 @@ class Program
             {
                 if (abetka[j] == text[i] && j + a < abetka.Length)
                 {
-                    text[i] = abetka[j + a];
+                    btext += abetka[j + a];
                     break;
                 }
                 else if(abetka[j] == text[i] && j + a > abetka.Length)
                 {
-                    text[i] = abetka[0 + a];
+                    btext += abetka[0 + a - (abetka.Length - j)];
                     break;
                 }
             }
         }
+        text = btext;
+        Console.WriteLine(text);
     }
 }
